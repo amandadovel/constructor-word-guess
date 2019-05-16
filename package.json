@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/amandadovel/constructor-word-guess/issues"
   },
-  "homepage": "https://github.com/amandadovel/constructor-word-guess#readme"
+  "homepage": "https://github.com/amandadovel/constructor-word-guess#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  }
 }
