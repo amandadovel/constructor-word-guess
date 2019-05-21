@@ -1,22 +1,30 @@
-// dependency for inquirer npm package
-var inquirer = require("inquirer");
+function Letter(letter) {
+    this.letter = letter;
+    this.isGuessed = false;
 
-// global variables
-var input = process.argv[2];
+    this.renderLetter = function () {
+        if (this.letter === " ") {
+            return " ";
+        } else if (!this.isGuessed) {
+            return "_";
 
+        } else {
+            return this.letter;
+        }
+    }
+    this.checkLetter = function (guess) {
+        if (guess === this.letter) {
+            this.isGuessed = true;
+            return true;
 
+        } else {
+            this.isGuessed = false;
+            return false;
+        }
+    }
+}
+var test = new Letter("k");
+console.log(test.checkLetter("k"));
+console.log(test.renderLetter("k"));
 
-// Contains constructor, letter containing character or placeholder  
-// depending on if letter has been guessed
-// function letter(string) {
-//     this.string = string;
-//     this.guessed = false;
-//     this.renderLetter = function () {
-//         for (var i = 0; i > string.length; i++);
-//         let letter = string.length[i];
-//         console.log(letter);
-//     }
-//     this.checkLetter = function () {
-
-//     }
-// }
+module.exports = Letter;
