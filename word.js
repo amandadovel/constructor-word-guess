@@ -36,7 +36,7 @@ function Word(word) {
         this.letters.forEach(letter => {
             printedWord += letter.renderLetter() + " ";
         });
-        console.log(printedWord);
+        // console.log(printedWord);
         return printedWord;
     }
 
@@ -45,7 +45,7 @@ function Word(word) {
 // Check to see if functions are working by creating test variable
 
 // testing
-var test = new Word("Jaws");
-console.log(test.makeGuess("k"));
+// var test = new Word("Jaws");
+// console.log(test.makeGuess("k"));
 
 module.exports = Word;
