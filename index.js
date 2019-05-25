@@ -1,6 +1,8 @@
 // Require inquirer and word 
 const Word = require("./word");
 const inquirer = require("inquirer");
+const colors = require("colors");
+
 
 // Create wordBank
 const wordBank = [
@@ -18,8 +20,9 @@ let pickedWord;
 // function to initialize game 
 function init() {
     pickedWords = [];
-    console.log("Hello Welcome to 'Sweet Tooth' Word Guess Game!");
-    console.log("-----------------------------------------------");
+    console.log("\n-----------------------------------------------\n".rainbow);
+    console.log("\nHello Welcome to 'Sweet Tooth' Word Guess Game!\n".cyan);
+    console.log("\n-----------------------------------------------\n".rainbow);
     playGame();
 }
 
@@ -31,9 +34,9 @@ function playGame() {
         pickedWord = getWord();
     } else {
         // Win condition
-        console.log("\n-----------------\n");
-        console.log("Congrats you win!");
-        console.log("\n-----------------\n");
+        console.log("\n-----------------\n".rainbow);
+        console.log("\nCongrats you win!\n".magenta);
+        console.log("\n-----------------\n".rainbow);
         continuePrompt();
     }
     if (pickedWord) {
@@ -62,33 +65,43 @@ function makeGuess() {
         {
             name: "guessedLetter",
             message: word.update() +
-                "\n Guess a letter!" +
-                "\n Guesses left: " + guesses
+                "\n Guess a letter!\n".blue +
+                "\n Guesses left: ".green + guesses
         }
     ])
         .then(data => {
             word.letters.forEach(letter => {
-                letter.checkLetter(data.guessedLetter);
+                checker.push(letter.checkLetter(data.guessedLetter));
                 checker.push(letter.renderLetter());
-                console.log(checker);
             });
+            // console.log(checker);
+            // console.log(word.letters);
             if (guesses > 0 && checker.indexOf("_") !== -1) {
-                guesses--;
-                if (guesses === 0) {
-                    console.log("\n------------------------------\n");
-                    console.log("Sorry, no more guesses! Game Over!");
-                    console.log("\n------------------------------\n");
-
-                    continuePrompt();
-                } else {
+                if (checker.indexOf(true) === -1) {
+                    guesses--;
+                    console.log("\n Incorrect! \n ".red)
                     makeGuess();
+                } else if (checker.indexOf(true) !== -1) {
+                    console.log("\n Correct! \n".magenta);
+                    makeGuess();
+                } else {
+                    if (guesses === 0) {
+                        console.log("\n------------------------------\n".rainbow);
+                        console.log("\nSorry, no more guesses! Game Over!\n".red);
+                        console.log("\n------------------------------\n".rainbow);
+
+                        continuePrompt();
+                    } else {
+                        makeGuess();
+                    }
                 }
+
             } else {
-                console.log("\n---------------------------\n");
-                console.log("Congrats! You guessed the word!");
-                console.log("\n---------------------------\n");
                 console.log(word.update());
-                playGame();
+                console.log("\n---------------------------\n".rainbow);
+                console.log("\nCongrats! You guessed the word!\n".yellow);
+                console.log("\n---------------------------\n".rainbow);
+                continuePrompt();
             }
         });
 }
@@ -98,14 +111,14 @@ function continuePrompt() {
         {
             name: "continue",
             type: "confirm",
-            message: "Would you like to play again?"
+            message: "\nWould you like to play again?\n".blue
         }
     ])
         .then(data => {
             if (data.continue) {
                 init();
             } else {
-                return console.log("***Thanks for playing!***");
+                return console.log("\n***Thanks for playing!***\n".rainbow);
             }
         });
 }

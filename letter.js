@@ -9,11 +9,12 @@ function Letter(letter) {
     this.renderLetter = function () {
         if (this.letter === " ") {
             return " ";
-        } else if (!this.isGuessed) {
-            return "_";
-
         } else {
-            return this.letter;
+            if (!this.isGuessed) {
+                return "_";
+            } else {
+                return this.letter;
+            }
         }
     }
 
@@ -24,9 +25,6 @@ function Letter(letter) {
             this.isGuessed = true;
             return true;
 
-        } else {
-            this.isGuessed = false;
-            return false;
         }
     }
 }

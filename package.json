@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/amandadovel/constructor-word-guess#readme",
   "dependencies": {
+    "alphabet": "^1.0.0",
+    "colors": "^1.3.3",
     "inquirer": "^6.3.1"
   }
 }
