@@ -136,10 +136,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Built With 🔧
 
-* [Node] (https://nodejs.org/en/download/) - As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. 
-* [Javascript] (https://www.javascript.com/) -JavaScript is the programming language of HTML and the Web
-* [JSON] (https://www.json.org/) - Javascript object notation, syntax for storing and exchanging information. 
-* [NPM]  https://www.npmjs.com/
+* [Node](https://nodejs.org/en/download/) - As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. 
+* [Javascript](https://www.javascript.com/) -JavaScript is the programming language of HTML and the Web
+* [JSON](https://www.json.org/) - Javascript object notation, syntax for storing and exchanging information. 
+* [NPM](https://www.npmjs.com/) - Online repository for publishing open-source Node.js projects
 
 
 ## Author ⌨️
